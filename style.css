@@ -141,6 +141,10 @@ a {
   animation-play-state: running !important;
 }
 
+.grow h6, .grow p {
+  opacity: 0;
+}
+
 h6 {
   color: white;
   font-size: 48px;
@@ -215,6 +219,6 @@ p {
 }
 
 @keyframes grow {
-  from {box-shadow: 0px 0px 0px 0px deepskyblue}
-  to {box-shadow: 0px 0px 0px 1500px deepskyblue;}
+  from {box-shadow: 0px 0px 0px 0px deepskyblue; font-size: 2px;}
+  to {box-shadow: 0px 0px 0px 1500px deepskyblue; font-size: 30px;}
 }
