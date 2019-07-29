@@ -20,6 +20,7 @@ body {
 }
 
 ul {
+  padding: 0;
   margin-top: -10px;
   list-style-type: none;
 }
@@ -132,7 +133,7 @@ a {
 }
 
 .leave #betsBox {
-  animation: leaveDown 2s;
+  animation: leaveDown 3s;
   animation-fill-mode: forwards;
 }
 
@@ -241,7 +242,7 @@ p {
 
 @keyframes leaveDown {
   from {bottom: 0px}
-  to {bottom: -1000px;}
+  to {bottom: -3000px;}
 }
 
 @keyframes leaveLeft {
