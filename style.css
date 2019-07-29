@@ -71,36 +71,42 @@ a {
 
 #remindersBox {
   background-color: deepskyblue;
+  --bkg: deepskyblue;
   animation: flyRight 1.5s;
   animation-fill-mode: forwards;
 }
 
 #peopleBox {
   background-color: darkturquoise;
+  --bkg: darkturquoise;
   animation: flyDown 1.5s;
   animation-fill-mode: forwards;
 }
 
 #tasksBox {
   background-color: royalblue;
+  --bkg: royalblue;
   animation: flyLeft 1.5s;
   animation-fill-mode: forwards;
 }
 
 #journalBox {
   background-color: #76DA86;
+  --bkg: #76DA86;
   animation: flyRight 1.5s;
   animation-fill-mode: forwards;
 }
 
 #betsBox {
   background-color: #58c292;
+  --bkg: #58c292;
   animation: flyUp 1.5s;
   animation-fill-mode: forwards;
 }
 
 #keepBox {
   background-color: #17a772;
+  --bkg: #17a772;
   animation: flyLeft 1.5s;
   animation-fill-mode: forwards;
 }
@@ -136,6 +142,36 @@ a {
 }
 
 .grow#remindersBox {
+  animation: grow 2s;
+  animation-fill-mode: forwards;
+  animation-play-state: running !important;
+}
+
+.grow#peopleBox {
+  animation: grow 2s;
+  animation-fill-mode: forwards;
+  animation-play-state: running !important;
+}
+
+.grow#tasksBox{
+  animation: grow 2s;
+  animation-fill-mode: forwards;
+  animation-play-state: running !important;
+}
+
+.grow#journalBox {
+  animation: grow 2s;
+  animation-fill-mode: forwards;
+  animation-play-state: running !important;
+}
+
+.grow#betsBox {
+  animation: grow 2s;
+  animation-fill-mode: forwards;
+  animation-play-state: running !important;
+}
+
+.grow#keepBox {
   animation: grow 2s;
   animation-fill-mode: forwards;
   animation-play-state: running !important;
@@ -219,6 +255,6 @@ p {
 }
 
 @keyframes grow {
-  from {box-shadow: 0px 0px 0px 0px deepskyblue; font-size: 2px;}
-  to {box-shadow: 0px 0px 0px 1500px deepskyblue; font-size: 30px;}
+  from {box-shadow: 0px 0px 0px 0px var(--bkg);}
+  to {box-shadow: 0px 0px 0px 1500px var(--bkg);}
 }
