@@ -1,6 +1,7 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 #navbar {
@@ -23,7 +24,7 @@ ul {
   list-style-type: none;
 }
 
-a {
+#logo {
   color: white;
   text-decoration: none;
   font-size: 30px;
@@ -31,23 +32,35 @@ a {
   letter-spacing: 3px;
 }
 
+a {
+  text-decoration: none;
+}
+
 #boxTopContainer {
   width: 50%;
   margin: 80px auto;
+  margin-bottom: 0;
   display: flex;
   justify-content: center;
-  height: 400px;
+  height: 375px;
+}
+
+#boxBottomContainer {
+  width: 50%;
+  margin: 50px auto;
+  display: flex;
+  justify-content: center;
+  height: 375px;
 }
 
 .rememoryBox {
   width: 300px;
-  height: 375px;
+  height: 300px;
   margin: 0px 25px 0px 25px;
+  padding-top: 75px;
   flex: none;
   border-radius: 10px;
   position: relative;
-  animation: dropDown 2.5s;
-  animation-fill-mode: forwards;
   transition: all 0.2s ease-out;
 }
 
@@ -58,24 +71,89 @@ a {
 
 #remindersBox {
   background-color: deepskyblue;
+  animation: flyRight 1.5s;
+  animation-fill-mode: forwards;
 }
 
 #peopleBox {
   background-color: darkturquoise;
+  animation: flyDown 1.5s;
+  animation-fill-mode: forwards;
 }
 
 #tasksBox {
   background-color: royalblue;
+  animation: flyLeft 1.5s;
+  animation-fill-mode: forwards;
+}
+
+#journalBox {
+  background-color: #76DA86;
+  animation: flyRight 1.5s;
+  animation-fill-mode: forwards;
+}
+
+#betsBox {
+  background-color: #58c292;
+  animation: flyUp 1.5s;
+  animation-fill-mode: forwards;
+}
+
+#keepBox {
+  background-color: #17a772;
+  animation: flyLeft 1.5s;
+  animation-fill-mode: forwards;
+}
+
+.leave #remindersBox {
+  animation: leaveLeft 1s;
+  animation-fill-mode: forwards;
+}
+
+.leave #peopleBox {
+  animation: leaveUp 1s;
+  animation-fill-mode: forwards;
+}
+
+.leave #tasksBox{
+  animation: leaveRight 1s;
+  animation-fill-mode: forwards;
+}
+
+.leave #journalBox {
+  animation: leaveLeft 1s;
+  animation-fill-mode: forwards;
+}
+
+.leave #betsBox {
+  animation: leaveDown 1s;
+  animation-fill-mode: forwards;
+}
+
+.leave #keepBox {
+  animation: leaveRight 1s;
+  animation-fill-mode: forwards;
+}
+
+.grow#remindersBox {
+  animation: grow 2s;
+  animation-fill-mode: forwards;
+  animation-play-state: running !important;
 }
 
 h6 {
   color: white;
   font-size: 48px;
-  margin-top: 75px;
+  margin-top: 0;
+  margin-bottom: 100px;
   text-align: center;
   font-family: 'Concert One', sans-serif;
   font-weight: 100;
   transition: all 0.2s ease-out;
+}
+
+#keepBox h6 {
+  font-size: 44px;
 }
 
 .rememoryBox:hover h6 {
@@ -83,7 +161,60 @@ h6 {
   transition: all 0.2s ease-out;
 }
 
-@keyframes dropDown {
+p {
+  color: rgba(255,255,255,0);
+  font-size: 24px;
+  font-family: 'Heebo', sans-serif;
+  text-align: center;
+  transition: all 0.2s ease-out;
+}
+
+.rememoryBox:hover p {
+  color: white;
+  transition: all 0.2s ease-out;
+}
+
+@keyframes flyDown {
   from {top: -450px}
   to {top: 0px;}
+}
+
+@keyframes flyUp {
+  from {bottom: -450px}
+  to {bottom: 0px;}
+}
+
+@keyframes flyRight {
+  from {left: -800px}
+  to {left: 0px;}
+}
+
+@keyframes flyLeft {
+  from {right: -800px}
+  to {right: 0px;}
+}
+
+@keyframes leaveUp {
+  from {top: 0px}
+  to {top: -450px;}
+}
+
+@keyframes leaveDown {
+  from {bottom: 0px}
+  to {bottom: -450px;}
+}
+
+@keyframes leaveLeft {
+  from {left: 0px}
+  to {left: -800px;}
+}
+
+@keyframes leaveRight {
+  from {right: 0px}
+  to {right: -800px;}
+}
+
+@keyframes grow {
+  from {box-shadow: 0px 0px 0px 0px deepskyblue}
+  to {box-shadow: 0px 0px 0px 1500px deepskyblue;}
 }

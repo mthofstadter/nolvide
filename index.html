@@ -9,22 +9,37 @@
 <body>
   <div id="navbar">
       <ul>
-        <li><a href="#">nolvide</a></li>
+        <li><a href="index.html" id="logo">nolvide</a></li>
       </ul>
   </div>
-  <div id="boxMainContainer">
+  <div id="boxMainContainer" class="test">
     <div id="boxTopContainer">
-      <a href="#"><div class="rememoryBox" id="remindersBox"></a>
+      <a href="#" onclick="boxClick(this)" class="remindersBox"><div class="rememoryBox" id="remindersBox">
         <h6>Reminders</h6>
-      </div>
-      <div class="rememoryBox" id="peopleBox">
+        <p>don't forget</p>
+      </div></a>
+      <a href="#" onclick="boxClick(this)" class="peopleBox"><div class="rememoryBox" id="peopleBox">
         <h6>People</h6>
-      </div>
-      <div class="rememoryBox" id="tasksBox">
+        <p>personal profiles</p>
+      </div></a>
+      <a href="#" onclick="boxClick(this)" class="tasksBox"><div class="rememoryBox" id="tasksBox">
         <h6>Tasks</h6>
-      </div>
+        <p>to-do list</p>
+      </div></a>
     </div>
     <div id="boxBottomContainer">
+      <a href="#" onclick="boxClick(this)" class="journalBox"><div class="rememoryBox" id="journalBox">
+        <h6>Journal</h6>
+        <p>dear diary</p>
+      </div></a>
+      <a href="#" onclick="boxClick(this)" class="betsBox"><div class="rememoryBox" id="betsBox">
+        <h6>Bets</h6>
+        <p>bet OPH</p>
+      </div></a>
+      <a href="#" onclick="boxClick(this)" class="keepBox"><div class="rememoryBox" id="keepBox">
+        <h6>Keep in Touch</h6>
+        <p>timers to text</p>
+      </div></a>
     </div>
   </div>
 </body>
