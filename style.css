@@ -1,0 +1,57 @@
+#boxTopContainer {
+  width: 50%;
+  margin: 80px auto;
+  display: flex;
+  justify-content: center;
+  height: 400px;
+}
+
+.rememoryBox {
+  width: 300px;
+  height: 375px;
+  margin: 0px 25px 0px 25px;
+  flex: none;
+  border-radius: 10px;
+  position: relative;
+  animation: dropDown 3s;
+  animation-fill-mode: forwards;
+  transition: all 0.2s ease-out;
+}
+
+.rememoryBox:hover {
+  box-shadow: 2px 2px 4px black;
+  transition: all 0.2s ease-out;
+}
+
+#remindersBox {
+  background-color: deepskyblue;
+}
+
+#peopleBox {
+  background-color: darkturquoise;
+}
+
+#tasksBox {
+  background-color: royalblue;
+}
+
+h6 {
+  color: white;
+  font-size: 48px;
+  margin-top: 75px;
+  text-align: center;
+  font-family: 'Concert One', sans-serif;
+  font-weight: 100;
+  transition: all 0.2s ease-out;
+}
+
+.rememoryBox:hover h6 {
+  text-shadow: 2px 2px 4px black;
+  transition: all 0.2s ease-out;
+}
+
+@keyframes dropDown {
+  from {top: -600px}
+  to {top: 0px;}
+
+}
