@@ -132,7 +132,7 @@ a {
 }
 
 .leave #betsBox {
-  animation: leaveDown 1s;
+  animation: leaveDown 2s;
   animation-fill-mode: forwards;
 }
 
@@ -241,7 +241,7 @@ p {
 
 @keyframes leaveDown {
   from {bottom: 0px}
-  to {bottom: -450px;}
+  to {bottom: -1000px;}
 }
 
 @keyframes leaveLeft {
