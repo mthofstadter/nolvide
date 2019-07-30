@@ -105,7 +105,7 @@ a {
   animation-fill-mode: forwards;
 }
 
-#keepBox {
+#correspondBox {
   background-color: #17a772;
   --bkg: #17a772;
   animation: flyLeft 1.5s;
@@ -137,7 +137,7 @@ a {
   animation-fill-mode: forwards;
 }
 
-.leave #keepBox {
+.leave #correspondBox {
   animation: leaveRight 1s;
   animation-fill-mode: forwards;
 }
@@ -172,7 +172,7 @@ a {
   animation-play-state: running !important;
 }
 
-.grow#keepBox {
+.grow#correspondBox {
   animation: grow 2s;
   animation-fill-mode: forwards;
   animation-play-state: running !important;
@@ -191,10 +191,6 @@ h6 {
   font-family: 'Concert One', sans-serif;
   font-weight: 100;
   transition: all 0.2s ease-out;
-}
-
-#keepBox h6 {
-  font-size: 44px;
 }
 
 .rememoryBox:hover h6 {

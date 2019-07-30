@@ -1,4 +1,4 @@
-//keep.js
+//correspond.js
 //mthofstadter.github.io/nolvide
 
 
