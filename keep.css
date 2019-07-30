@@ -4,6 +4,17 @@ body {
   background-color: #17A772;
 }
 
+#bkgFade {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  top: 0px;
+  background-color: #17a772;
+  animation: fadeOut 1s;
+  animation-fill-mode: forwards;
+}
+
 #navbar {
   display: flex;
   flex-direction: column;
@@ -99,4 +110,9 @@ input::placeholder {
 @keyframes grow {
   from {box-shadow: 0px 0px 0px 0px white;}
   to {box-shadow: 0px 0px 0px 1500px white;}
+}
+
+@keyframes fadeOut {
+  from {opacity: 1; visibility: visible}
+  to {opacity: 0; visibility: hidden;}
 }
