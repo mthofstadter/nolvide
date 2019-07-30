@@ -58,11 +58,20 @@ h1 {
   border-radius: 10px;
 }
 
-h2 {
-  color: black;
+input {
+  border: none;
   font-size: 36px;
   font-family: "Concert One", sans-serif;
   font-weight: 10;
   margin-left: 20px;
   margin-top: 10px;
+  width: 85%;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: lightgray;
 }
