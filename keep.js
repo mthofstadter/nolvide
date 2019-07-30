@@ -18,3 +18,8 @@ function save(input) {
   console.log(inputID)
   localStorage.setItem(inputID, value);
 }
+
+function goHome() {
+  document.getElementById('whiteBox').classList.add('grow');
+  setTimeout("location.href='index.html';",1250);
+}
