@@ -4,17 +4,6 @@ body {
   background-color: #17A772;
 }
 
-#bkgFade {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  z-index: 2;
-  top: 0px;
-  background-color: #17a772;
-  animation: fadeOut 1s;
-  animation-fill-mode: forwards;
-}
-
 #navbar {
   display: flex;
   flex-direction: column;
@@ -44,26 +33,6 @@ ul {
   letter-spacing: 3px;
 }
 
-#whiteBox {
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  border-radius: 10px;
-  left: 0;
-  right: 0;
-  top: -100px;
-  margin: auto;
-  background-color: white;
-  display: none;
-  z-index: 2;
-}
-
-.grow#whiteBox {
-  animation: grow 2s;
-  animation-fill-mode: forwards;
-  display: block;
-}
-
 a {
   text-decoration: none;
 }
@@ -85,11 +54,21 @@ h1 {
 .group {
   width: 50%;
   height: 300px;
+  min-height: 300px;
+  margin-bottom: 25px;
   background-color: white;
   border-radius: 10px;
+  transition: box-shadow 0.2s ease-out;
+  resize: vertical;
+  overflow: auto;
 }
 
-input {
+.group:hover {
+  box-shadow: 0px 0px 5px black;
+  transition: box-shadow 0.2s ease-out;
+}
+
+#groupHeader {
   border: none;
   font-size: 36px;
   font-family: "Concert One", sans-serif;
@@ -99,12 +78,125 @@ input {
   width: 85%;
 }
 
-input:focus {
+#groupHeader:focus {
   outline: none;
 }
 
-input::placeholder {
+#groupHeader::placeholder {
   color: lightgray;
+}
+
+#namesContainer {
+  margin: 10px 0px 0px 20px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  white-space: nowrap;
+  font-size: 20px;
+}
+
+#name1 {
+  border: none;
+  font-size: 24px;
+  font-family: 'Concert One', sans-serif;
+  font-weight: 1;
+  color: #17a772;
+  width: 200px;
+  margin-right: 10px;
+}
+
+#name1:focus {
+  outline: none;
+}
+
+
+#timebar {
+  width: 60%;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #eeeeee;
+}
+
+#checkbox {
+  height: 20px;
+  min-height: 20px;
+  width: 20px;
+  min-width: 20px;
+  margin-left: 10px;
+}
+
+#days1 {
+  width: 40px;
+  height: auto;
+  font-size: 24px;
+  font-family: 'Concert One', sans-serif;
+  font-weight: 100;
+  padding: 0;
+  border: none;
+  text-align: right;
+  margin-left: 10px;
+}
+
+#days1:focus {
+  outline: none;
+}
+
+#daysText {
+  display: block;
+  margin-left: 5px;
+  font-size: 24px;
+  font-family: 'Concert One', sans-serif;
+  font-weight: 100;
+}
+
+/***************************************
+Transitions/Animations
+***************************************/
+
+#bkgFade {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  top: 0px;
+  background-color: #17a772;
+  animation: fadeOut 0.75s;
+  animation-fill-mode: forwards;
+}
+
+/***************************************
+Transitions/Animations
+***************************************/
+
+#bkgFade {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  top: 0px;
+  background-color: #17a772;
+  animation: fadeOut 0.75s;
+  animation-fill-mode: forwards;
+}
+
+#whiteBox {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  left: 0;
+  right: 0;
+  top: -100px;
+  margin: auto;
+  background-color: white;
+  display: none;
+  z-index: 2;
+}
+
+.grow#whiteBox {
+  animation: grow 2s;
+  animation-fill-mode: forwards;
+  display: block;
 }
 
 @keyframes grow {
