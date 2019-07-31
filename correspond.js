@@ -38,10 +38,7 @@ function calculate(nameID) {
 }
 
 function resetDays(checkbox) {
-  if(document.getElementById("name1").value == "Tofukima" || document.getElementById("name1").value == "tofukima" )  {
-    document.getElementById("body").classList.add("checked");
-    setTimeout("document.getElementById('body').classList.remove('checked');", 800);
-  }
+  document.getElementById("body").classList.add("checked");
+  setTimeout("document.getElementById('body').classList.remove('checked');", 800);
   setTimeout("checkbox.checked = false;", 800);
-
 }

@@ -97,14 +97,14 @@ Transitions/Animations
 }
 
 .grow#whiteBox {
-  animation: grow 2s;
+  animation: grow 1.5s;
   animation-fill-mode: forwards;
   display: block;
 }
 
 @keyframes grow {
   from {box-shadow: 0px 0px 0px 0px white;}
-  to {box-shadow: 0px 0px 0px 1500px white;}
+  to {box-shadow: 0px 0px 0px 2000px white;}
 }
 
 @keyframes fadeOut {

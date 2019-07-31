@@ -8,20 +8,6 @@ body {
   background-color: black;
 }
 
-h4 {
-  position: absolute;
-  margin-top: 400px;
-  margin-left: 0px;
-  font-size: 150px;
-  font-family: fantasy;
-  color: white;
-  display: none;
-  margin-bottom: 0;
-}
-
-.checked h4 {
-  display: block;
-}
 
 #navbar {
   display: flex;
@@ -213,14 +199,14 @@ Transitions/Animations
 }
 
 .grow#whiteBox {
-  animation: grow 2s;
+  animation: grow 1.5s;
   animation-fill-mode: forwards;
   display: block;
 }
 
 @keyframes grow {
   from {box-shadow: 0px 0px 0px 0px white;}
-  to {box-shadow: 0px 0px 0px 1500px white;}
+  to {box-shadow: 0px 0px 0px 2000px white;}
 }
 
 @keyframes fadeOut {
