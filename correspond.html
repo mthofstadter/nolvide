@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <title>keep in touch</title>
+  <title>correspond</title>
   <link rel='stylesheet' type='text/css' href='correspond.css' />
   <link href="https://fonts.googleapis.com/css?family=Bungee+Shade|Concert+One|Heebo&display=swap" rel="stylesheet">
   <script src="correspond.js"></script>
 </head>
-<body>
+<body id="body">
   <div id="bkgFade"></div>
   <div id="navbar">
       <ul>
@@ -19,13 +19,14 @@
     <div class="group">
       <input id="groupHeader"placeholder="Group Name..." maxlength="40" onchange="save(this)"></input>
       <div id="namesContainer">
-        <input value="Kreemchisa Bagal" id="name1" spellcheck="false"></input>
+        <input value="Kreemchisa Bagal" id="name1" spellcheck="false" onchange="save(this)"></input>
         <div id="timebar"></div>
-        <input type="text" id="days1" maxlength="3" placeholder="__"></input>
+        <input type="text" id="days1" maxlength="3" placeholder="__" onchange="save(this)"></input>
         <p id="daysText">days</p>
-        <input type="checkbox" id="checkbox"></input>
+        <input type="checkbox" id="checkbox" onchange="resetDays(this)"></input>
       </div>
     </div>
+    <h4>IM GONNA SERVE U</h4>
   </div>
 </body>
 </html>

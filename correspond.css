@@ -4,6 +4,25 @@ body {
   background-color: #17A772;
 }
 
+.checked#body {
+  background-color: black;
+}
+
+h4 {
+  position: absolute;
+  margin-top: 400px;
+  margin-left: 0px;
+  font-size: 150px;
+  font-family: fantasy;
+  color: white;
+  display: none;
+  margin-bottom: 0;
+}
+
+.checked h4 {
+  display: block;
+}
+
 #navbar {
   display: flex;
   flex-direction: column;
