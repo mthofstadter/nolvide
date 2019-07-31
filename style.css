@@ -1,3 +1,8 @@
+html {
+  height: 100%;
+}
+
+
 body {
   margin: 0;
   padding: 0;
@@ -33,33 +38,36 @@ ul {
   letter-spacing: 3px;
 }
 
+main {
+  margin-top: 100px;
+}
+
 a {
   text-decoration: none;
+  display: block;
+  margin: 0px 12.5px 0px 12.5px;
+
 }
 
 #boxTopContainer {
-  width: 50%;
-  margin: 80px auto;
+  width: 100%;
+  margin-top: 0px;
   margin-bottom: 0;
   display: flex;
   justify-content: center;
-  height: 375px;
 }
 
 #boxBottomContainer {
-  width: 50%;
-  margin: 50px auto;
+  width: 100%;
+  margin-top: 25px;
   display: flex;
   justify-content: center;
-  height: 375px;
 }
 
 .rememoryBox {
   width: 300px;
-  height: 300px;
-  margin: 0px 25px 0px 25px;
+  height: 275px; /*originally 300px*/
   padding-top: 75px;
-  flex: none;
   border-radius: 10px;
   position: relative;
   transition: all 0.2s ease-out;
@@ -179,7 +187,7 @@ a {
 }
 
 .grow h6, .grow p {
-  opacity: 0;
+  opacity: 0; /*fades out*/
 }
 
 h6 {
@@ -202,6 +210,7 @@ p {
   color: rgba(255,255,255,0);
   font-size: 24px;
   font-family: 'Heebo', sans-serif;
+  margin: 0;
   text-align: center;
   transition: all 0.2s ease-out;
 }
