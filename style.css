@@ -1,7 +1,10 @@
+/*style.css
+mthofstadter.github.io/nolvide
+*/
+
 html {
   height: 100%;
 }
-
 
 body {
   margin: 0;
@@ -24,6 +27,7 @@ body {
   background-image: linear-gradient(to right, #3bbba7, #74c97e);
 }
 
+
 ul {
   padding: 0;
   margin-top: -10px;
@@ -36,6 +40,15 @@ ul {
   font-size: 30px;
   font-family: 'Bungee Shade', sans-serif;
   letter-spacing: 3px;
+}
+
+@media only screen and (max-width: 600px) {
+  #logo {
+    margin-top: 15px;
+  }
+  body {
+    background-color: lightgray;
+  }
 }
 
 main {
