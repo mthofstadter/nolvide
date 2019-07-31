@@ -17,7 +17,7 @@ body {
   top: 0;
   width: 100%;
   height: 60px;
-  z-index: 2;
+  z-index: 3;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -120,70 +120,42 @@ a {
   animation-fill-mode: forwards;
 }
 
-.leave #remindersBox {
-  animation: leaveLeft 1s;
-  animation-fill-mode: forwards;
-}
-
-.leave #peopleBox {
-  animation: leaveUp 1s;
-  animation-fill-mode: forwards;
-}
-
-.leave #tasksBox{
-  animation: leaveRight 1s;
-  animation-fill-mode: forwards;
-}
-
-.leave #journalBox {
-  animation: leaveLeft 1s;
-  animation-fill-mode: forwards;
-}
-
-.leave #betsBox {
-  animation: leaveDown 3s;
-  animation-fill-mode: forwards;
-}
-
-.leave #correspondBox {
-  animation: leaveRight 1s;
-  animation-fill-mode: forwards;
-}
 
 .grow#remindersBox {
+  z-index: 2;
   animation: grow 2s;
   animation-fill-mode: forwards;
-  animation-play-state: running !important;
 }
 
 .grow#peopleBox {
+  z-index: 2;
   animation: grow 2s;
   animation-fill-mode: forwards;
-  animation-play-state: running !important;
 }
 
 .grow#tasksBox{
+  z-index: 2;
   animation: grow 2s;
   animation-fill-mode: forwards;
-  animation-play-state: running !important;
 }
 
 .grow#journalBox {
+  z-index: 2;
   animation: grow 2s;
   animation-fill-mode: forwards;
-  animation-play-state: running !important;
 }
 
 .grow#betsBox {
+  z-index: 2;
   animation: grow 2s;
   animation-fill-mode: forwards;
   animation-play-state: running !important;
 }
 
 .grow#correspondBox {
+  z-index: 2;
   animation: grow 2s;
   animation-fill-mode: forwards;
-  animation-play-state: running !important;
 }
 
 .grow h6, .grow p {
