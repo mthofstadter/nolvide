@@ -43,11 +43,11 @@ ul {
 }
 
 @media only screen and (max-width: 600px) {
-  #logo {
-    margin-top: 15px;
+  ul {
+    margin-top: 0px;
   }
   body {
-    background-color: lightgray;
+    background-color: gray;
   }
 }
 
