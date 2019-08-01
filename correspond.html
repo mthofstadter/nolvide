@@ -17,13 +17,13 @@
   <h1>Correspond</h1>
   <div class="container">
     <div class="group">
-      <input id="groupHeader"placeholder="Group Name..." maxlength="40" onchange="save(this)"></input>
+      <input id="groupHeader" class="editable" placeholder="Group Name..." maxlength="40" onchange="save(this)"></input>
       <div id="namesContainer">
-        <input value="Kreemchisa Bagal" id="name1" spellcheck="false" onchange="save(this)"></input>
+        <input id="name0" class="editable" placeholder="name..." spellcheck="false" onchange="save(this)"></input>
         <div id="timebar"></div>
-        <input type="text" id="days1" maxlength="3" placeholder="__" onchange="save(this)"></input>
+        <input id="days0" class="editable" type="text" maxlength="3" placeholder="__" onchange="save(this)"></input>
         <p id="daysText">days</p>
-        <input type="checkbox" id="checkbox" onchange="resetDays(this)"></input>
+        <input id="checkbox" type="checkbox" onchange="resetDays(this)"></input>
       </div>
     </div>
   </div>

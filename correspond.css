@@ -81,13 +81,11 @@ h1 {
   margin-left: 20px;
   margin-top: 10px;
   width: 85%;
+  color: black;
+  --color: black;
 }
 
-#groupHeader:focus {
-  outline: none;
-}
-
-#groupHeader::placeholder {
+::placeholder {
   color: lightgray;
 }
 
@@ -100,20 +98,16 @@ h1 {
   font-size: 20px;
 }
 
-#name1 {
+#name0 {
   border: none;
   font-size: 24px;
   font-family: 'Concert One', sans-serif;
   font-weight: 1;
   color: #17a772;
+  --color: #17a772;
   width: 200px;
   margin-right: 10px;
 }
-
-#name1:focus {
-  outline: none;
-}
-
 
 #timebar {
   width: 60%;
@@ -130,7 +124,7 @@ h1 {
   margin-left: 10px;
 }
 
-#days1 {
+#days0 {
   width: 40px;
   height: auto;
   font-size: 24px;
@@ -140,10 +134,8 @@ h1 {
   border: none;
   text-align: right;
   margin-left: 10px;
-}
-
-#days1:focus {
-  outline: none;
+  color: black;
+  --color: black;
 }
 
 #daysText {
@@ -153,6 +145,17 @@ h1 {
   font-family: 'Concert One', sans-serif;
   font-weight: 100;
 }
+
+.editable:hover {
+  text-shadow: 0px 0px 1px var(--color);
+}
+
+input:focus {
+  outline: none;
+}
+
+
+
 
 /***************************************
 Transitions/Animations
@@ -199,7 +202,7 @@ Transitions/Animations
 }
 
 .grow#whiteBox {
-  animation: grow 1.5s;
+  animation: grow 2s;
   animation-fill-mode: forwards;
   display: block;
 }

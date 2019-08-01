@@ -76,7 +76,7 @@ Transitions/Animations
 }
 
 .grow#whiteBox {
-  animation: grow 1.5s;
+  animation: grow 2s;
   animation-fill-mode: forwards;
   display: block;
 }

@@ -7,38 +7,50 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function init() {
-  if(localStorage.getItem('groupHeader') != null) {
-      document.getElementById('groupHeader').value = localStorage.getItem('groupHeader');
+  for(var i = 0; i < localStorage.length; i++) {
+    //console.log(localStorage.getItem(localStorage.key(i)));
+    if(document.getElementById(localStorage.key(i)) != null) { //If saved element exists on the page
+      document.getElementById(localStorage.key(i)).value = localStorage.getItem(localStorage.key(i));
+    }
   }
 }
 
 function save(input) {
   var inputID = input.id;
   var value = input.value;
-  console.log(inputID)
   localStorage.setItem(inputID, value);
-  if(input.id == "days1") {
-    calculate()
-  }
 }
 
 function goHome() {
   document.getElementById('whiteBox').classList.add('grow');
-  setTimeout("location.href='index.html';",1250);
+  setTimeout("location.href='index.html';",600);
 }
 
 
 function calculate(nameID) {
   //startDate = nameSD
   //days = nameDays
+
   var startDate = nameID.concat("SD");
-  startDate = localStorage.getItem(startDate);
-  console.log(startDate);
+  startDate = localStorage.setItem(startDate, 0);
+
+  var time = new Date();
+  time = time.getMinutes();
+  var elapsed = time - localStorage.getItem(startDate);
 
 }
 
 function resetDays(checkbox) {
-  document.getElementById("body").classList.add("checked");
   setTimeout("document.getElementById('body').classList.remove('checked');", 800);
+  if(document.getElementById("name0").value == "Christopher") {
+    document.getElementById("body").classList.add("checked");
+  }
+
   setTimeout("checkbox.checked = false;", 800);
+}
+
+function example() {
+  var c = document.getElementById("namesContainer").children;
+  c[0].value = "hello";
+  c[2].value = "123";
 }
