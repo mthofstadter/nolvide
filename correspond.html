@@ -16,15 +16,20 @@
   <div id="whiteBox"></div>
   <h1>Correspond</h1>
   <div class="container">
-    <div class="group">
-      <input id="groupHeader" class="editable" placeholder="Group Name..." maxlength="40" onchange="save(this)"></input>
-      <div id="namesContainer">
-        <input id="name0" class="editable" placeholder="name..." spellcheck="false" onchange="save(this)"></input>
-        <div id="timebar"></div>
-        <input id="days0" class="editable" type="text" maxlength="3" placeholder="__" onchange="save(this)"></input>
-        <p id="daysText">days</p>
-        <input id="checkbox" type="checkbox" onchange="resetDays(this)"></input>
+    <div class="group" id="group">
+      <div id="people">
+        <input id="groupHeader" class="editable" placeholder="Group Name..." maxlength="40" onchange="save(this)"></input>
+        <div id="person0" class="person">
+          <input id="name0" class="name editable" placeholder="name..." spellcheck="false" onchange="save(this)"></input>
+          <div id="timer0" class="timer"></div>
+          <input id="days0" class="days editable" type="text" maxlength="3" placeholder="__" onchange="save(this)"></input>
+          <p class="daysText">days</p>
+          <input id="checkbox0" class="checkbox" type="checkbox" onchange="resetDays(this)"></input>
+        </div>
       </div>
+
+      <button onclick="add()" style="margin-left: 20px">Add</button>
+
     </div>
   </div>
 </body>

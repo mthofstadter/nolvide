@@ -1,12 +1,18 @@
 //correspond.js
 //mthofstadter.github.io/nolvide
 
+var peopleArray = [];
 
 document.addEventListener("DOMContentLoaded", function(event) {
   init();
 });
 
 function init() {
+  //RESET
+  localStorage.setItem("peopleCount", 0);
+  if(localStorage.getItem("peopleArray") == null) {
+    localStorage.setItem("peopleArray", peopleArray);
+  }
   for(var i = 0; i < localStorage.length; i++) {
     //console.log(localStorage.getItem(localStorage.key(i)));
     if(document.getElementById(localStorage.key(i)) != null) { //If saved element exists on the page
@@ -21,9 +27,44 @@ function save(input) {
   localStorage.setItem(inputID, value);
 }
 
+function save2(input) {
+  var parent = input.parentElement;
+  var num = input.id[input.id.length - 1]; //get number of person
+  if(localStorage.getItem(input.id) == null) {
+    peopleArray.push([parent.children[0].value, parent.children[1].value, "date"]);
+  }
+  console.log(peopleArray[0][0]);
+
+}
+
+function add() {
+  var duplicate = document.getElementById("person0"); //always will have at least one
+  var newPerson = duplicate.cloneNode(true);
+  var newCount =  parseInt(localStorage.getItem("peopleCount")) + 1;
+  localStorage.setItem("peopleCount", newCount);
+
+  var textID = "person";
+  newPerson.children[0].value = "";
+  newPerson.children[0].id = textID.concat(newCount);
+
+  textID = "timer";
+  newPerson.children[1].value = "";
+  newPerson.children[1].id = textID.concat(newCount);
+
+  textID = "days";
+  newPerson.children[2].value = "";
+  newPerson.children[2].id = textID.concat(newCount);
+
+  textID = "checkbox";
+  newPerson.children[4].value = "";
+  newPerson.children[4].id = textID.concat(newCount);
+
+  document.getElementById("people").appendChild(newPerson);
+}
+
 function goHome() {
   document.getElementById('whiteBox').classList.add('grow');
-  setTimeout("location.href='index.html';",600);
+  setTimeout("location.href='index.html';",1200);
 }
 
 
@@ -46,11 +87,5 @@ function resetDays(checkbox) {
     document.getElementById("body").classList.add("checked");
   }
 
-  setTimeout("checkbox.checked = false;", 800);
-}
-
-function example() {
-  var c = document.getElementById("namesContainer").children;
-  c[0].value = "hello";
-  c[2].value = "123";
+  setTimeout("checkbox0.checked = false;", 800);
 }

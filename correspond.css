@@ -8,7 +8,6 @@ body {
   background-color: black;
 }
 
-
 #navbar {
   display: flex;
   flex-direction: column;
@@ -89,7 +88,8 @@ h1 {
   color: lightgray;
 }
 
-#namesContainer {
+
+.person {
   margin: 10px 0px 0px 20px;
   display: flex;
   align-items: center;
@@ -98,7 +98,7 @@ h1 {
   font-size: 20px;
 }
 
-#name0 {
+.name {
   border: none;
   font-size: 24px;
   font-family: 'Concert One', sans-serif;
@@ -109,14 +109,14 @@ h1 {
   margin-right: 10px;
 }
 
-#timebar {
+.timer {
   width: 60%;
   height: 30px;
   border-radius: 5px;
   background-color: #eeeeee;
 }
 
-#checkbox {
+.checkbox {
   height: 20px;
   min-height: 20px;
   width: 20px;
@@ -124,7 +124,7 @@ h1 {
   margin-left: 10px;
 }
 
-#days0 {
+.days {
   width: 40px;
   height: auto;
   font-size: 24px;
@@ -138,7 +138,7 @@ h1 {
   --color: black;
 }
 
-#daysText {
+.daysText {
   display: block;
   margin-left: 5px;
   font-size: 24px;
@@ -154,8 +154,8 @@ input:focus {
   outline: none;
 }
 
-
-
+.person {
+}
 
 /***************************************
 Transitions/Animations
