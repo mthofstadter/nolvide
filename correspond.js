@@ -8,33 +8,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
 });
 
 function init() {
+  peopleArray.push(document.getElementById("person0"));
+  console.log(peopleArray);
   //RESET
   localStorage.setItem("peopleCount", 0);
-  if(localStorage.getItem("peopleArray") == null) {
-    localStorage.setItem("peopleArray", peopleArray);
-  }
   for(var i = 0; i < localStorage.length; i++) {
     //console.log(localStorage.getItem(localStorage.key(i)));
     if(document.getElementById(localStorage.key(i)) != null) { //If saved element exists on the page
       document.getElementById(localStorage.key(i)).value = localStorage.getItem(localStorage.key(i));
     }
   }
+  //peopleArray = JSON.parse(localStorage.getItem("peopleArray"));
 }
 
-function save(input) {
+function save2(input) {
   var inputID = input.id;
   var value = input.value;
   localStorage.setItem(inputID, value);
 }
 
-function save2(input) {
+function save(input) {
   var parent = input.parentElement;
   var num = input.id[input.id.length - 1]; //get number of person
-  if(localStorage.getItem(input.id) == null) {
-    peopleArray.push([parent.children[0].value, parent.children[1].value, "date"]);
-  }
-  console.log(peopleArray[0][0]);
-
+  peopleArray.push(parent);
+  localStorage.setItem("peopleArray", JSON.stringify(peopleArray));
+  console.log(peopleArray);
 }
 
 function add() {
@@ -43,7 +41,11 @@ function add() {
   var newCount =  parseInt(localStorage.getItem("peopleCount")) + 1;
   localStorage.setItem("peopleCount", newCount);
 
+
   var textID = "person";
+  newPerson.id = textID.concat(newCount);
+
+  textID = "name"
   newPerson.children[0].value = "";
   newPerson.children[0].id = textID.concat(newCount);
 
@@ -60,6 +62,7 @@ function add() {
   newPerson.children[4].id = textID.concat(newCount);
 
   document.getElementById("people").appendChild(newPerson);
+  localStorage.setItem("peopleArray", JSON.stringify(peopleArray));
 }
 
 function goHome() {
