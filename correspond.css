@@ -173,11 +173,11 @@ input:focus {
 
 .editMode #editButton {
   background-color: lightgray;
+  border: 2px solid red;
 }
 
 #addButton {
-  margin-left: 20px;
-  margin-bottom: 20px;
+  margin: 20px 0px 20px 20px;
 }
 
 /***************************************

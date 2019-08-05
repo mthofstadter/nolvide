@@ -1,20 +1,20 @@
 //correspond.js
 //mthofstadter.github.io/nolvide
 
+var editing = false;
+
+
 document.addEventListener("DOMContentLoaded", function(event) {
   init();
 });
 
 function init() {
   //RESET
+  //localStorage.clear();
   //localStorage.setItem("peopleCount", 0);
-  for(var i = 0; i < localStorage.length; i++) {
-    //console.log(localStorage.getItem(localStorage.key(i)));
-    if(document.getElementById(localStorage.key(i)) != null) { //If saved element exists on the page
-      document.getElementById(localStorage.key(i)).value = localStorage.getItem(localStorage.key(i));
-    }
-  }
+
   restorePeople();
+  basicRestore();
 }
 
 function goHome() {
@@ -23,7 +23,7 @@ function goHome() {
 }
 
 function restorePeople() {
-  for(var i=1; i<=parseInt(localStorage.getItem("peopleCount")); i++) {
+  for(var i=0; i<=parseInt(localStorage.getItem("peopleCount")); i++) {
     var checkThis = "person";
     checkThis = checkThis.concat(i);
     if(localStorage.getItem(checkThis) != null) {
@@ -33,26 +33,25 @@ function restorePeople() {
 }
 
 function save(input) {
-  var parent = input.parentElement;
-  var personArray =
-    {name:parent.children[0].value, days:parent.children[2].value, startDate:"SD"}
-  localStorage.setItem(parent.id, JSON.stringify(personArray));
-  var peopleArray = [];
+  var parentID = input.parentElement.id;
+  var personArray = accessArray(parentID);
+  var inputID = input.id;
+  inputID = inputID.replace(/[0-9]/g, ''); //remove numbers
+  personArray[inputID] = input.value;
+  localStorage.setItem(parentID, JSON.stringify(personArray));
+  calculate(parentID);
 }
 
+function basicSave(input) {
+  localStorage.setItem(input.id, input.value);
+}
 
-function save3(input) {
-  var parent = input.parentElement;
-  var num = input.id[input.id.length - 1]; //get number of person
-  var personArray = {}
-  peopleArray.push(parent);
-  console.log(peopleArray);
-  console.log("json", JSON.stringify(peopleArray));
-  localStorage.setItem("peopleArray", JSON.stringify(peopleArray));
-  var temp = localStorage.getItem("peopleArray");
-  console.log(temp);
-  peopleArray = JSON.parse(temp);
-  console.log(peopleArray);
+function basicRestore() {
+  for(var i = 0; i < localStorage.length; i++) {
+    if(document.getElementById(localStorage.key(i)) != null) { //If saved element exists on the page
+      document.getElementById(localStorage.key(i)).value = localStorage.getItem(localStorage.key(i));
+    }
+  }
 }
 
 function add() {
@@ -64,6 +63,10 @@ function add() {
 
   var textID = "person";
   newPerson.id = textID.concat(newCount);
+
+  var emptyArray = {name:"", days:"", startDate:new Date()}
+  emptyArray = JSON.stringify(emptyArray);
+  localStorage.setItem(newPerson.id, emptyArray);
 
   textID = "name"
   newPerson.children[0].id = textID.concat(newCount);
@@ -86,7 +89,9 @@ function restore(num) {
 
   var textID = "person";
   newPerson.id = textID.concat(num);
-  access = JSON.parse(localStorage.getItem(newPerson.id));
+  var access = JSON.parse(localStorage.getItem(newPerson.id));
+  console.log("restoring:", newPerson.id);
+
 
   textID = "name"
   newPerson.children[0].id = textID.concat(num);
@@ -103,9 +108,8 @@ function restore(num) {
   newPerson.children[4].id = textID.concat(num);
 
   document.getElementById("people").appendChild(newPerson);
+  calculate(newPerson.id);
 }
-
-var editing = false;
 
 function edit() {
   if(editing == false) {
@@ -126,23 +130,43 @@ function checkMe(element) {
     parent.style.display = "none";
   }
   else {
-    console.log("not editing");
+    var parent = element.parentElement;
+    var array1 = accessArray(parent.id);
+    array1["startDate"] = new Date();
+    //array1["startDate"] = new Date("Aug 8, 2019 15:00:00");
+    localStorage.setItem(parent.id, JSON.stringify(array1));
+
+    element.checked = false;
   }
+}
+
+function accessArray(personID) {
+  return JSON.parse(localStorage.getItem(personID));
 }
 
 
 
 function calculate(nameID) {
-  //startDate = nameSD
-  //days = nameDays
+//  var currentDate = new Date();
+  var currentDate = new Date("Aug 10, 2019 15:00:00")
+  var personArray = accessArray(nameID);
+  var startDate = Date.parse(personArray["startDate"]);
+  var secs = Math.abs(currentDate - startDate) / 1000;
+  var elapsed = Math.round(secs / 86400);
+  console.log("elapsed", elapsed);
+  console.log("days", parseInt(personArray["days"]));
 
-  var startDate = nameID.concat("SD");
-  startDate = localStorage.setItem(startDate, 0);
-
-  var time = new Date();
-  time = time.getMinutes();
-  var elapsed = time - localStorage.getItem(startDate);
-
+  var percent = Math.round(elapsed / parseInt(personArray["days"]) * 100);
+  var element = document.getElementById(nameID);
+  var inverse = 100 - percent;
+  if(percent > inverse) {
+    element.children[1].style.cssText =
+      `background: linear-gradient(to right, #17a772 ${percent}%, #eeeeee ${inverse}%)`;
+  }
+  else {
+    element.children[1].style.cssText =
+      `background: linear-gradient(to left, #eeeeee ${inverse}%, #17a772 ${percent}%)`;
+  }
 }
 
 function resetDays(checkbox) {

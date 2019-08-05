@@ -18,7 +18,7 @@
   <div class="container">
     <div class="group" id="group">
       <div id="people">
-        <input id="groupHeader" class="editable" placeholder="Group Name..." maxlength="40" onchange="save(this)"></input>
+        <input id="groupHeader" class="editable" placeholder="Group Name..." maxlength="40" onchange="basicSave(this)"></input>
         <button id="editButton" onclick="edit()">Edit</button>
         <div id="exPerson" class="person">
           <input id="" class="name editable" placeholder="name..." spellcheck="false" onchange="save(this)"></input>
@@ -26,13 +26,6 @@
           <input id="" class="days editable" type="text" maxlength="3" placeholder="__" onchange="save(this)"></input>
           <p class="daysText">days</p>
           <input id="" class="checkbox" type="checkbox" onclick="checkMe(this)"></input>
-        </div>
-        <div id="person0" class="person">
-          <input id="name0" class="name editable" placeholder="name..." spellcheck="false" onchange="save(this)"></input>
-          <div id="timer0" class="timer"></div>
-          <input id="days0" class="days editable" type="text" maxlength="3" placeholder="__" onchange="save(this)"></input>
-          <p class="daysText">days</p>
-          <input id="checkbox0" class="checkbox" type="checkbox" onclick="checkMe(this)"></input>
         </div>
       </div>
 
