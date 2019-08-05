@@ -57,7 +57,7 @@ h1 {
 
 .group {
   width: 50%;
-  height: 300px;
+  height: auto;
   min-height: 300px;
   margin-bottom: 25px;
   background-color: white;
@@ -86,6 +86,10 @@ h1 {
 
 ::placeholder {
   color: lightgray;
+}
+
+#exPerson {
+  display: none;
 }
 
 
@@ -155,6 +159,25 @@ input:focus {
 }
 
 .person {
+}
+
+.editMode .checkbox {
+  -webkit-appearance: none;
+  border: 2px solid red;
+  border-radius: 5px;
+}
+
+.editMode .checkbox:hover {
+  background-color: #F5B7B1;
+}
+
+.editMode #editButton {
+  background-color: lightgray;
+}
+
+#addButton {
+  margin-left: 20px;
+  margin-bottom: 20px;
 }
 
 /***************************************
