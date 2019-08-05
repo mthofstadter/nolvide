@@ -3,7 +3,6 @@
 
 var editing = false;
 
-
 document.addEventListener("DOMContentLoaded", function(event) {
   init();
 });
@@ -92,7 +91,6 @@ function restore(num) {
   var access = JSON.parse(localStorage.getItem(newPerson.id));
   console.log("restoring:", newPerson.id);
 
-
   textID = "name"
   newPerson.children[0].id = textID.concat(num);
   newPerson.children[0].value = access["name"];
@@ -135,7 +133,8 @@ function checkMe(element) {
     array1["startDate"] = new Date();
     //array1["startDate"] = new Date("Aug 8, 2019 15:00:00");
     localStorage.setItem(parent.id, JSON.stringify(array1));
-
+    calculate(parent.id);
+    parent.children[1].classList.add("drain");
     element.checked = false;
   }
 }
