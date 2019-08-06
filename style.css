@@ -27,7 +27,6 @@ body {
   background-image: linear-gradient(to right, #3bbba7, #74c97e);
 }
 
-
 ul {
   padding: 0;
   margin: 0;
@@ -59,7 +58,6 @@ a {
   text-decoration: none;
   display: block;
   margin: 0px 12.5px 0px 12.5px;
-
 }
 
 #boxTopContainer {
@@ -132,7 +130,6 @@ a {
   animation: flyLeft 1.5s;
   animation-fill-mode: forwards;
 }
-
 
 .grow#remindersBox {
   z-index: 2;
