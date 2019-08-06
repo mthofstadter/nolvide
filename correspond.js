@@ -146,10 +146,11 @@ function accessArray(personID) {
 
 
 function calculate(nameID) {
-//  var currentDate = new Date();
-  var currentDate = new Date("Aug 10, 2019 15:00:00")
+  var currentDate = new Date();
+  //var currentDate = new Date("Aug 10, 2019 15:00:00")
   var personArray = accessArray(nameID);
   var startDate = Date.parse(personArray["startDate"]);
+  //var startDate = new Date("Aug 3, 2019 15:00:00");
   var secs = Math.abs(currentDate - startDate) / 1000;
   var elapsed = Math.round(secs / 86400);
   console.log("elapsed", elapsed);

@@ -18,8 +18,10 @@
   <div class="container">
     <div class="group" id="group">
       <div id="people">
-        <input id="groupHeader" class="editable" placeholder="Group Name..." maxlength="40" onchange="basicSave(this)"></input>
-        <button id="editButton" onclick="edit()">Edit</button>
+        <div id = "headerContainer">
+          <input id="groupHeader" class="editable" placeholder="Group Name..." maxlength="40" onchange="basicSave(this)"></input>
+          <button id="editButton" onclick="edit()">EDIT</button>
+        </div>
         <div id="exPerson" class="person">
           <input id="" class="name editable" placeholder="name..." spellcheck="false" onchange="save(this)"></input>
           <div id="" class="timer"></div>
@@ -29,7 +31,7 @@
         </div>
       </div>
 
-      <button id="addButton" onclick="add()">Add</button>
+      <button id="addButton" onclick="add()">ADD</button>
 
     </div>
   </div>
