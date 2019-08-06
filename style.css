@@ -79,7 +79,7 @@ a {
 
 .rememoryBox {
   width: 300px;
-  height: 275px; /*originally 300px*/
+  height: 200px; /*originally 300px*/
   padding-top: 75px;
   border-radius: 10px;
   position: relative;
@@ -179,7 +179,7 @@ h6 {
   color: white;
   font-size: 48px;
   margin-top: 0;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   text-align: center;
   font-family: 'Concert One', sans-serif;
   font-weight: 100;

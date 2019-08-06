@@ -135,15 +135,16 @@ function checkMe(element) {
     localStorage.setItem(parent.id, JSON.stringify(array1));
     calculate(parent.id);
     parent.children[1].classList.add("drain");
-    element.checked = false;
+    element.classList.add("checkAnimate");
+    setTimeout(`${element.id}.checked = false;`, 500);
+    setTimeout(`${element.id}.classList.remove("checkAnimate");`, 1000);
+
   }
 }
 
 function accessArray(personID) {
   return JSON.parse(localStorage.getItem(personID));
 }
-
-
 
 function calculate(nameID) {
   var currentDate = new Date();
