@@ -33,12 +33,14 @@ ul {
   list-style-type: none;
 }
 
+
 #logo {
   color: white;
   text-decoration: none;
   font-size: 30px;
   font-family: 'Bungee Shade', sans-serif;
   letter-spacing: 3px;
+  height: 60px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -184,7 +186,7 @@ h6 {
 }
 
 .rememoryBox:hover h6 {
-  text-shadow: 0px 0px 5px black;
+  text-shadow: 3px 3px #aaaaaa;
   transition: all 0.2s ease-out;
 }
 
