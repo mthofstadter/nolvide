@@ -4,10 +4,6 @@ body {
   background-color: #17A772;
 }
 
-.checked#body {
-  background-color: black;
-}
-
 #navbar {
   display: flex;
   flex-direction: column;
@@ -21,12 +17,6 @@ body {
   padding: 0;
   overflow: hidden;
   background-image: linear-gradient(to right, #3bbba7, #74c97e);
-}
-
-ul {
-  margin-top: -10px;
-  padding: 0;
-  list-style-type: none;
 }
 
 #logo {
