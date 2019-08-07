@@ -130,12 +130,11 @@ button {
   height: 30px;
   border-radius: 5px;
   background-color: #eeeeee;
+  animation: none;
 }
 
-.drain.timer {
-  /*background: none;
-  animation: drain 2s;
-  animation-fill-mode: backwards;*/
+.full.timer {
+  animation: pulse 2s infinite;
 }
 
 .checkbox {
@@ -255,9 +254,10 @@ Transitions/Animations
   to {opacity: 0; visibility: hidden;}
 }
 
-@keyframes drain {
-  from {box-shadow: 0px 0px 0px 0px #eeeeee inset}
-  to {box-shadow: 0px 0px 0px 25px #eeeeee inset}
+@keyframes pulse {
+  0% {box-shadow: 0 0 0 0 rgba(23,167,114, 0.6);}
+  70% {box-shadow: 0 0 0 5px rgba(23,167,114, 0);}
+  100% {box-shadow: 0 0 0 0 rgba(23,167,114, 0);}
 }
 
 @keyframes checked {

@@ -168,6 +168,13 @@ function calculate(nameID) {
     element.children[1].style.cssText =
       `background: linear-gradient(to left, #eeeeee ${inverse}%, #17a772 ${percent}%)`;
   }
+
+  if(percent >= 100) {
+    element.children[1].classList.add("full");
+  }
+  else {
+    element.children[1].classList.remove("full");
+  }
 }
 
 function resetDays(checkbox) {
