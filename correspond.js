@@ -9,9 +9,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 function init() {
   //RESET
-  //localStorage.clear();
-  //localStorage.setItem("peopleCount", 0);
-
+  // localStorage.clear();
+  if(localStorage.getItem("peopleCount") == null) {
+    localStorage.setItem("peopleCount", 0);
+  }
   restorePeople();
   basicRestore();
 }
@@ -54,7 +55,7 @@ function basicRestore() {
 }
 
 function add() {
-  var duplicate = document.getElementById("exPerson");
+  var duplicate = document.getElementById("exPerson"); //exPerson = example to clone
   var newPerson = duplicate.cloneNode(true);
   var newCount =  parseInt(localStorage.getItem("peopleCount")) + 1;
   localStorage.setItem("peopleCount", newCount);
