@@ -35,6 +35,7 @@ function restorePeople() {
 function save(input) {
   var parentID = input.parentElement.id;
   var personArray = accessArray(parentID);
+  console.log(personArray);
   var inputID = input.id;
   inputID = inputID.replace(/[0-9]/g, ''); //remove numbers
   personArray[inputID] = input.value;
@@ -59,7 +60,6 @@ function add() {
   var newPerson = duplicate.cloneNode(true);
   var newCount =  parseInt(localStorage.getItem("peopleCount")) + 1;
   localStorage.setItem("peopleCount", newCount);
-
 
   var textID = "person";
   newPerson.id = textID.concat(newCount);
@@ -90,7 +90,6 @@ function restore(num) {
   var textID = "person";
   newPerson.id = textID.concat(num);
   var access = JSON.parse(localStorage.getItem(newPerson.id));
-  console.log("restoring:", newPerson.id);
 
   textID = "name"
   newPerson.children[0].id = textID.concat(num);
@@ -114,10 +113,26 @@ function edit() {
   if(editing == false) {
     document.getElementById("people").classList.add("editMode");
     editing = true;
+    for(let i=0; i<=parseInt(localStorage.getItem("peopleCount")); i++) {
+      let timer = document.getElementById("timer".concat(i));
+      if(timer != null) {
+        timer.innerHTML = "";
+        editDate(timer);
+        // let ymd = accessArray(timer.parentElement.id).startDate;
+        // let ymdText = ymd.substring(5,7) + "/" + ymd.substring(8,10) + "/" + ymd.substring(0,4);
+        // timer.innerHTML = ymdText;
+      }
+    }
   }
   else {
     document.getElementById("people").classList.remove("editMode");
     editing = false;
+    for(let i=0; i<=parseInt(localStorage.getItem("peopleCount")); i++) {
+      let timer = document.getElementById("timer".concat(i));
+      if(timer != null) {
+        timer.removeChild(timer.firstChild);
+      }
+    }
   }
 }
 
@@ -132,7 +147,7 @@ function checkMe(element) {
     var parent = element.parentElement;
     var array1 = accessArray(parent.id);
     array1["startDate"] = new Date();
-    //array1["startDate"] = new Date("Aug 8, 2019 15:00:00");
+    // array1["startDate"] = new Date("Aug 15, 2022 15:00:00"); //reset for testing
     localStorage.setItem(parent.id, JSON.stringify(array1));
     calculate(parent.id);
     parent.children[1].classList.add("drain");
@@ -148,15 +163,8 @@ function accessArray(personID) {
 }
 
 function calculate(nameID) {
-  var currentDate = new Date();
-  //var currentDate = new Date("Aug 10, 2019 15:00:00")
   var personArray = accessArray(nameID);
-  var startDate = Date.parse(personArray["startDate"]);
-  //var startDate = new Date("Aug 3, 2019 15:00:00");
-  var secs = Math.abs(currentDate - startDate) / 1000;
-  var elapsed = Math.round(secs / 86400);
-  console.log("elapsed", elapsed);
-  console.log("days", parseInt(personArray["days"]));
+  let elapsed = getElapsed(nameID);
 
   var percent = Math.round(elapsed / parseInt(personArray["days"]) * 100);
   var element = document.getElementById(nameID);
@@ -178,6 +186,42 @@ function calculate(nameID) {
   }
 }
 
+function getElapsed(nameID) {
+  var currentDate = new Date();
+  //var currentDate = new Date("Aug 22, 2022 15:00:00")
+  var personArray = accessArray(nameID);
+  var startDate = Date.parse(personArray["startDate"]);
+  //var startDate = new Date("Aug 12, 2022 15:00:00");
+  var secs = Math.abs(currentDate - startDate) / 1000;
+  return Math.round(secs / 86400);
+}
+
+function showDate(timer) {
+  if(editing) {
+    return;
+  }
+  let elapsed = getElapsed(timer.parentElement.id);
+  if(elapsed == 0) {
+    timer.innerHTML = "Today";
+  } else if(elapsed == 1) {
+    timer.innerHTML = elapsed + " day ago";
+  } else {
+    timer.innerHTML = elapsed + " days ago";
+  }
+  timer.classList.add("showDate");
+  setTimeout(`${timer.id}.classList.remove("showDate");`, 2000);
+}
+
+function editDate(timer) {
+  const datePicker = document.createElement("input");
+  datePicker.id = "date" + timer.id.slice(-1);
+  datePicker.classList.add("date");
+  datePicker.type = "date";
+  datePicker.setAttribute("onchange", "saveNewDate(this)");
+  datePicker.value = accessArray(timer.parentElement.id).startDate.split('T')[0];
+  timer.appendChild(datePicker);
+}
+
 function resetDays(checkbox) {
   setTimeout("document.getElementById('body').classList.remove('checked');", 800);
   if(document.getElementById("name0").value == "Christopher") {
@@ -185,4 +229,13 @@ function resetDays(checkbox) {
   }
 
   setTimeout("checkbox0.checked = false;", 800);
+}
+
+function saveNewDate(datePicker) {
+  var person = datePicker.parentElement.parentElement;
+  var array1 = accessArray(person.id);
+  array1["startDate"] = new Date(datePicker.value);
+  // array1["startDate"] = new Date("Aug 15, 2022 15:00:00"); //reset for testing
+  localStorage.setItem(person.id, JSON.stringify(array1));
+  calculate(person.id)
 }
