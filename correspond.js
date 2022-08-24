@@ -171,19 +171,23 @@ function calculate(nameID) {
   var inverse = 100 - percent;
   if(percent > inverse) {
     element.children[1].style.cssText =
-      `background: linear-gradient(to right, #17a772 ${percent}%, #eeeeee ${inverse}%)`;
+      `background: linear-gradient(to left, #eeeeee ${percent}%, #17a772 ${inverse}%)`;
   }
   else {
     element.children[1].style.cssText =
-      `background: linear-gradient(to left, #eeeeee ${inverse}%, #17a772 ${percent}%)`;
+      `background: linear-gradient(to right, #17a772 ${inverse}%, #eeeeee ${percent}%)`;
   }
 
   if(percent >= 100) {
-    element.children[1].classList.add("full");
+    element.children[1].classList.add("empty");
   }
   else {
-    element.children[1].classList.remove("full");
+    element.children[1].classList.remove("empty");
   }
+}
+
+function test() {
+  document.getElementById("timer1").classList.add("fillTank");
 }
 
 function getElapsed(nameID) {
@@ -220,15 +224,6 @@ function editDate(timer) {
   datePicker.setAttribute("onchange", "saveNewDate(this)");
   datePicker.value = accessArray(timer.parentElement.id).startDate.split('T')[0];
   timer.appendChild(datePicker);
-}
-
-function resetDays(checkbox) {
-  setTimeout("document.getElementById('body').classList.remove('checked');", 800);
-  if(document.getElementById("name0").value == "Christopher") {
-    document.getElementById("body").classList.add("checked");
-  }
-
-  setTimeout("checkbox0.checked = false;", 800);
 }
 
 function saveNewDate(datePicker) {

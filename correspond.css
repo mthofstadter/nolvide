@@ -4,6 +4,10 @@ body {
   background-color: #17A772;
 }
 
+p {
+  margin: 0;
+}
+
 #navbar {
   display: flex;
   flex-direction: column;
@@ -36,9 +40,9 @@ h1 {
   font-family: "Concert One", sans-serif;
   text-align: center;
   color: white;
-  margin-top: 100px;
+  margin-top: 80px;
   font-weight: 100;
-  font-size: 56px;
+  font-size: 40px;
 }
 
 .container {
@@ -47,8 +51,7 @@ h1 {
 }
 
 .group {
-  width: 65%;
-  min-width: 500px;
+  width: 85%;
   height: auto;
   min-height: 300px;
   margin-bottom: 25px;
@@ -72,11 +75,14 @@ h1 {
 
 #headerContainer {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
   outline: none;
   border: 2px solid rgba(0, 0, 0, 0);
+  color: black;
   padding: 5px 5px 5px 5px;
   background-color: #eeeeee;
   border-radius: 5px;
@@ -88,7 +94,7 @@ button {
 
 #editButton {
   display: block;
-  float: right;
+  height: 35px;
   margin-right: 10px;
   margin-top: 10px;
 }
@@ -107,12 +113,14 @@ button {
 }
 
 .person {
-  margin: 10px 0px 0px 20px;
+  margin: 10px 20px 0px 20px;
   display: flex;
+  flex-flow: wrap;
   align-items: center;
-  height: 40px;
+  height: 75px;
   white-space: nowrap;
   font-size: 20px;
+  flex: 1 auto;
 }
 
 .name {
@@ -122,12 +130,13 @@ button {
   font-weight: 1;
   color: #17a772;
   --color: #17a772;
-  width: 200px;
+  width: 20%;
   margin-right: 10px;
+  flex: 1 auto;
 }
 
 .timer {
-  width: 60%;
+  width: 100%;
   height: 30px;
   border-radius: 5px;
   background-color: #eeeeee;
@@ -137,18 +146,25 @@ button {
   font-size: 20px;
   line-height: 30px;
   color:rgba(0, 0, 0, 0); /*hidden*/
-  transition: color 1s ease-out;
+  transition: color 1s ease-out, box-shadow 1s ease-out;
   display: flex;
   justify-content: center;
   align-items: center;
+  order: 5;
+  flex: 1 auto;
 }
 
-.full.timer {
+.empty.timer {
   animation: pulse 2s infinite;
 }
 
 .showDate.timer {
   color: black;
+  box-shadow: 0px 0px 0px 30px rgb(200, 200, 200, 0.9) inset;
+}
+
+.fillTank.timer {
+  animation: fillTank 0.2s forwards;
 }
 
 .editMode .timer {
@@ -157,6 +173,7 @@ button {
 
 .date {
   font-family: 'Concert One', sans-serif;
+  color: black;
 }
 
 .checkbox {
@@ -169,7 +186,6 @@ button {
   width: 20px;
   min-width: 20px;
   margin-left: 10px;
-  margin-right: 10px;
   cursor: pointer;
   background-color: #eeeeee;
   transition: background-color 0.2s ease-out;
@@ -274,7 +290,7 @@ Transitions/Animations
 }
 
 @keyframes pulse {
-  0% {box-shadow: 0 0 0 0 rgba(23,167,114, 0.8);}
+  0% {box-shadow: 0 0 0 0 rgba(23, 167, 114, 0.8);}
   70% {box-shadow: 0 0 0 5px rgba(23,167,114, 0);}
   100% {box-shadow: 0 0 0 0 rgba(23,167,114, 0);}
 }
@@ -288,4 +304,43 @@ Transitions/Animations
 @keyframes fadeDate {
   from {color:rgba(0, 0, 0, 0);}
   to {color: rgba(0, 0, 0, 1);}
+}
+
+@keyframes fillTank {
+  /* to {background: linear-gradient(to right, #eeeeee 0%, #17a772 100%)} */
+}
+
+/***************************************
+Desktop/Tablet Sizing
+***************************************/
+
+@media only screen and (min-width: 992px) {
+  .group {
+    width: 65%;
+    min-width: 500px;
+  }
+
+  h1 {
+    font-family: "Concert One", sans-serif;
+    text-align: center;
+    color: white;
+    margin-top: 100px;
+    font-weight: 100;
+    font-size: 56px;
+  }
+
+  .timer {
+    width: 60%;
+    order: 0;
+  }
+
+  .person {
+    margin: 10px 20px 0px 20px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    white-space: nowrap;
+    font-size: 20px;
+    flex-flow: nowrap;
+  }
 }
