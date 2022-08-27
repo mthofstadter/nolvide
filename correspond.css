@@ -8,6 +8,32 @@ p {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+button {
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0);
+  color: black;
+  padding: 5px 5px 5px 5px;
+  background-color: #eeeeee;
+  border-radius: 5px;
+  font-family: 'Concert One', sans-serif;
+  font-size: 16px;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+h1 {
+  font-family: "Concert One", sans-serif;
+  text-align: center;
+  color: white;
+  margin-top: 80px;
+  font-weight: 100;
+  font-size: 40px;
+}
+
 #navbar {
   display: flex;
   flex-direction: column;
@@ -32,22 +58,10 @@ p {
   line-height: 60px;
 }
 
-a {
-  text-decoration: none;
-}
-
-h1 {
-  font-family: "Concert One", sans-serif;
-  text-align: center;
-  color: white;
-  margin-top: 80px;
-  font-weight: 100;
-  font-size: 40px;
-}
-
 .container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .group {
@@ -61,7 +75,7 @@ h1 {
   overflow: auto;
 }
 
-#groupHeader {
+.groupHeader {
   border: none;
   font-size: 36px;
   font-family: "Concert One", sans-serif;
@@ -73,33 +87,20 @@ h1 {
   --color: black;
 }
 
-#headerContainer {
+.headerContainer {
   width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
-button {
-  outline: none;
-  border: 2px solid rgba(0, 0, 0, 0);
-  color: black;
-  padding: 5px 5px 5px 5px;
-  background-color: #eeeeee;
-  border-radius: 5px;
-  font-family: 'Concert One', sans-serif;
-  font-size: 16px;
-  font-weight: 100;
-  cursor: pointer;
-}
-
-#editButton {
+.editButton {
   display: block;
   height: 35px;
   margin-right: 10px;
   margin-top: 10px;
 }
 
-.editMode #editButton {
+ .editMode .editButton {
   background-color: lightgray;
   border: 2px solid red;
 }
@@ -109,6 +110,10 @@ button {
 }
 
 #exPerson {
+  display: none;
+}
+
+#group- {
   display: none;
 }
 
@@ -226,6 +231,10 @@ button {
   text-shadow: 0px 0px 1px var(--color);
 }
 
+input {
+  padding-left: 0px;
+}
+
 input:focus {
   outline: none;
 }
@@ -240,8 +249,20 @@ input:focus {
   background-color: #F5B7B1;
 }
 
-#addButton {
+.addButton {
   margin: 20px 0px 20px 20px;
+}
+
+.addGroupButton {
+  display: block;
+  height: 35px;
+  float: right;
+}
+
+.bottomContainer {
+  height: 40px;
+  width: 85%;
+  margin: 0px auto;
 }
 
 /***************************************
@@ -316,6 +337,11 @@ Desktop/Tablet Sizing
 
 @media only screen and (min-width: 992px) {
   .group {
+    width: 65%;
+    min-width: 500px;
+  }
+
+  .bottomContainer {
     width: 65%;
     min-width: 500px;
   }

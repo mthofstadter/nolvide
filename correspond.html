@@ -14,25 +14,28 @@
   </div>
   <div id="whiteBox"></div>
   <h1>Correspond</h1>
-  <div class="container">
-    <div class="group" id="group">
-      <div id="people">
-        <div id = "headerContainer">
-          <input id="groupHeader" class="editable" placeholder="Group Name..." maxlength="40" onchange="basicSave(this)"></input>
-          <button id="editButton" onclick="edit()">EDIT</button>
-        </div>
-        <div id="exPerson" class="person">
-          <input id="" class="name editable" placeholder="name..." spellcheck="false" onchange="save(this)"></input>
-          <div id="" class="timer" onclick="showDate(this)"></div>
-          <input id="" class="days editable" type="text" maxlength="3" placeholder="__" onchange="save(this)"></input>
-          <p class="daysText">days</p>
-          <input id="" class="checkbox" type="checkbox" onclick="checkMe(this)"></input>
-        </div>
-      </div>
-
-      <button id="addButton" onclick="add()">ADD</button>
-
+  <div id="container" class="container">
+  </div>
+<div class="bottomContainer">
+  <button class="addGroupButton" onclick="addGroup()">ADD GROUP</button>
+</div>
+<!-- Cloning Purposes -------------------------------------------------->
+<div id="group-" class="group">
+  <div id="people-">
+    <div id ="headerContainer-" class="headerContainer">
+      <input id="groupHeader-" class="groupHeader editable" placeholder="Group Name..." maxlength="40" onchange="saveGroupName(this)"></input>
+      <button id="editButton-" class="editButton" onclick="edit(this)">EDIT</button>
     </div>
   </div>
+  <button id="addButton-" class="addButton" onclick="addPerson(this)">ADD</button>
+</div>
+
+<div id="exPerson" class="person">
+  <input id="" class="name editable" placeholder="name..." spellcheck="false" onchange="save(this)"></input>
+  <div id="" class="timer" onclick="showDate(this)"></div>
+  <input id="" class="days editable" type="text" maxlength="3" placeholder="__" onchange="save(this)"></input>
+  <p class="daysText">days</p>
+  <input id="" class="checkbox" type="checkbox" onclick="checkMe(this)"></input>
+</div>
 </body>
 </html>
