@@ -166,7 +166,7 @@ function edit(editButton) {
     document.getElementById("people-"+groupNum).classList.remove("editMode");
     editing = false;
     for(let i=0; i<=groupsArray[groupNum].length; i++) {
-      let timer = document.getElementById("timer-".concat(i));
+      let timer = document.getElementById("timer-"+groupNum+"-"+i);
       if(timer != null) {
         timer.removeChild(timer.firstChild);
       }
