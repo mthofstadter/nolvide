@@ -96,11 +96,11 @@ h1 {
 .editButton {
   display: block;
   height: 35px;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-top: 10px;
 }
 
- .editMode .editButton {
+.editMode .editButton {
   background-color: lightgray;
   border: 2px solid red;
 }
@@ -251,6 +251,27 @@ input:focus {
 
 .addButton {
   margin: 20px 0px 20px 20px;
+}
+
+.editMode .addButton {
+  display: none;
+}
+
+.removeButton {
+  float: right;
+  margin: 20px 20px 20px 0px;
+  border: 2px solid red;
+  background-color: lightgray;
+  display: none;
+  transition: background-color 0.2s ease-out;
+}
+
+.editMode .removeButton {
+  display: block;
+}
+
+.editMode .removeButton:hover {
+  background-color: #F5B7B1;
 }
 
 .addGroupButton {

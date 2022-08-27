@@ -1,7 +1,7 @@
 //correspond.js
 //mthofstadter.github.io/nolvide
 
-var editing = false;
+let editing = [];
 
 document.addEventListener("DOMContentLoaded", function(event) {
   init();
@@ -15,7 +15,7 @@ function init() {
     let groupsNames = [""];
     localStorage.setItem("groupsArray", JSON.stringify(groupsArray));
     localStorage.setItem("groupsNames", JSON.stringify(groupsNames));
-  }
+  } 
   restoreLoop();
 }
 
@@ -28,6 +28,7 @@ function restoreLoop() {
   let groupsArray = accessGroups();
   let groupsNames = accessNames();
   for(let groupNum=0; groupNum<groupsArray.length; groupNum++) {
+    editing.push(false);
     restoreEmptyGroup(groupNum);
     document.getElementById("groupHeader-"+groupNum).value = groupsNames[groupNum];
     for(let personNum=0; personNum<groupsArray[groupNum].length; personNum++) {
@@ -131,6 +132,7 @@ function addGroup() {
   let groupNum = groupsArray.length;
   groupsArray.push([]);
   groupsNames.push("");
+  editing.push(false);
   localStorage.setItem("groupsArray",JSON.stringify(groupsArray));
   localStorage.setItem("groupsNames",JSON.stringify(groupsNames));
 
@@ -151,9 +153,9 @@ function edit(editButton) {
   let groupNum = editButton.id.split('-').pop();
   let groupsArray = accessGroups();
 
-  if(editing == false) {
-    document.getElementById("people-"+groupNum).classList.add("editMode");
-    editing = true;
+  if(editing[groupNum] == false) {
+    document.getElementById("group-"+groupNum).classList.add("editMode");
+    editing[groupNum] = true;
     for(let i=0; i<=groupsArray[groupNum].length; i++) {
       let timer = document.getElementById("timer-"+groupNum+"-"+i);
       if(timer != null) {
@@ -163,8 +165,8 @@ function edit(editButton) {
     }
   }
   else {
-    document.getElementById("people-"+groupNum).classList.remove("editMode");
-    editing = false;
+    document.getElementById("group-"+groupNum).classList.remove("editMode");
+    editing[groupNum] = false;
     for(let i=0; i<=groupsArray[groupNum].length; i++) {
       let timer = document.getElementById("timer-"+groupNum+"-"+i);
       if(timer != null) {
@@ -175,14 +177,15 @@ function edit(editButton) {
 }
 
 function checkMe(element) {
-  if(editing == true) { //in edit mode = delete
-    removePerson(element);
-    return;
-  }
   let groupNum = element.parentElement.parentElement.id.split('-').pop();
   let personNum = element.id.split('-').pop();
   let groupsArray = accessGroups();
 
+  if(editing[groupNum] == true) { //in edit mode = delete
+    removePerson(element);
+    return;
+  }
+  
   groupsArray[groupNum][personNum]["startDate"] = new Date();
   localStorage.setItem("groupsArray", JSON.stringify(groupsArray));
   calculate(groupNum, personNum);
@@ -237,9 +240,9 @@ function getElapsed(groupNum, personNum) {
 }
 
 function showDate(timer) {
-  let groupNum = timer.parentElement.parentElement.id.split('-').pop();
+  let groupNum = timer.id.split('-')[1];
   let personNum = timer.id.split('-').pop();
-  if(editing) {
+  if(editing[groupNum]) {
     return;
   }
   let elapsed = getElapsed(groupNum, personNum);
@@ -275,6 +278,19 @@ function saveNewDate(datePicker) {
   groupsArray[groupNum][personNum]["startDate"] = new Date(datePicker.value);
   localStorage.setItem("groupsArray", JSON.stringify(groupsArray));
   calculate(groupNum, personNum);
+}
+
+function removeGroup(removeButton) {
+  let groupNum = removeButton.id.split('-').pop();
+  let groupsArray = accessGroups();
+  let groupsNames = accessNames();
+  groupsArray.splice(groupNum,1); //removes group from array
+  groupsNames.splice(groupNum,1); 
+  editing.splice(groupNum,1);
+  localStorage.setItem("groupsArray", JSON.stringify(groupsArray));
+  localStorage.setItem("groupsNames", JSON.stringify(groupsNames));
+  removeButton.parentElement.remove();
+
 }
 
   //var currentDate = new Date("Aug 22, 2022 15:00:00")
