@@ -185,14 +185,10 @@ function checkMe(element) {
     removePerson(element);
     return;
   }
-  let timer = document.getElementById("timer-"+groupNum+"-"+personNum);
-  // animateFill(groupNum, personNum, timer, false);
-  // setTimeout(function() {
-  //   animateFill(groupNum, personNum, timer, true);
-  // }, 2000);
+  animateFill(groupNum, personNum, false);
   groupsArray[groupNum][personNum]["startDate"] = new Date();
   localStorage.setItem("groupsArray", JSON.stringify(groupsArray));
-  calculate(groupNum, personNum);
+  // calculate(groupNum, personNum); Animation handles
 
 
   element.classList.add("checkAnimate");
@@ -201,21 +197,31 @@ function checkMe(element) {
 
 }
 
-function animateFill(groupNum, personNum, timer, completed) {
+function animateFill(groupNum, personNum, completed) {
   var rootCSS = document.querySelector(':root');
+  let timer = document.getElementById("timer-" + groupNum + "-" + personNum);
   let elapsed = getElapsed(groupNum, personNum);
   let groupsArray = accessGroups();
   let personArray = groupsArray[groupNum][personNum];
   let percent = elapsed / parseInt(personArray["days"]);
+  if(percent > 1) {
+    percent = 1;
+  }
   let timerWidth = timer.offsetWidth;
-  console.log("timerWidth" + timerWidth + " percent" + percent);
   let timerStart = Math.round(timerWidth * (1 - percent));
-  console.log(timerStart);
+  let duration = 0.4;
+  console.log("timerWidth" + timerWidth + " percent" + percent + " timerStart" + timerStart + " duration" + duration);
+
 
   if(!completed) {
-    rootCSS.style.setProperty('--startFill', timerStart);
+    rootCSS.style.setProperty('--startFill', timerStart+"px");
+    rootCSS.style.setProperty('--endFill', timerWidth+"px");
+    rootCSS.style.setProperty('--fillDuration', duration+"s");
     timer.classList.remove("empty");
     timer.classList.add("fillTank");
+    setTimeout(function() {
+      animateFill(groupNum, personNum, true);
+    }, (duration*1000));
   } else {
     timer.classList.remove("fillTank");
     calculate(groupNum, personNum);

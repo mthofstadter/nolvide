@@ -176,6 +176,7 @@ h1 {
 
 .fillTank.timer {
   animation: fillTank var(--fillDuration) forwards;
+  animation-timing-function: linear;
 }
 
 .editMode .timer {
@@ -355,8 +356,8 @@ Transitions/Animations
 }
 
 @keyframes fillTank {
-  from {box-shadow: var(--startFill) 0px #17A772 inset;}
-  to {box-shadow: var(--endFill) 0px #17A772 inset;}
+  from {box-shadow: var(--startFill) 0px #17A772  inset;}
+  to {box-shadow: var(--endFill) 0px #17A772  inset;}
 }
 
 /***************************************
