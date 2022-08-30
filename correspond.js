@@ -81,6 +81,7 @@ function restoreEmptyGroup(groupNum) {
   document.getElementById("container").appendChild(newGroup);
 }
 
+
 function save(input) {
   let groupNum = input.id.split('-')[1];
   let personNum = input.id.split('-')[2];
@@ -111,8 +112,7 @@ function addPerson(group) {
   let groupNum = group.id.split('-').pop();
   let personNum = groupsArray[groupNum].length;
 
-  let textID = "person-";
-  newPerson.id = textID.concat(personNum);
+  newPerson.id = "person-" + groupNum + "-" + personNum;
 
   let emptyArray = {name:"", days:"", startDate:new Date()}
   groupsArray[groupNum].push(emptyArray);
@@ -185,15 +185,41 @@ function checkMe(element) {
     removePerson(element);
     return;
   }
-  
+  let timer = document.getElementById("timer-"+groupNum+"-"+personNum);
+  // animateFill(groupNum, personNum, timer, false);
+  // setTimeout(function() {
+  //   animateFill(groupNum, personNum, timer, true);
+  // }, 2000);
   groupsArray[groupNum][personNum]["startDate"] = new Date();
   localStorage.setItem("groupsArray", JSON.stringify(groupsArray));
   calculate(groupNum, personNum);
-  element.parentElement.children[1].classList.add("drain");
+
+
   element.classList.add("checkAnimate");
   setTimeout(`document.getElementById("${element.id}").checked = false;`, 500);
   setTimeout(`document.getElementById("${element.id}").classList.remove("checkAnimate");`, 1000);
 
+}
+
+function animateFill(groupNum, personNum, timer, completed) {
+  var rootCSS = document.querySelector(':root');
+  let elapsed = getElapsed(groupNum, personNum);
+  let groupsArray = accessGroups();
+  let personArray = groupsArray[groupNum][personNum];
+  let percent = elapsed / parseInt(personArray["days"]);
+  let timerWidth = timer.offsetWidth;
+  console.log("timerWidth" + timerWidth + " percent" + percent);
+  let timerStart = Math.round(timerWidth * (1 - percent));
+  console.log(timerStart);
+
+  if(!completed) {
+    rootCSS.style.setProperty('--startFill', timerStart);
+    timer.classList.remove("empty");
+    timer.classList.add("fillTank");
+  } else {
+    timer.classList.remove("fillTank");
+    calculate(groupNum, personNum);
+  }
 }
 
 function removePerson(element) {  
@@ -203,6 +229,20 @@ function removePerson(element) {
   groupsArray[groupNum].splice(personNum,1); //removes person from array
   localStorage.setItem("groupsArray", JSON.stringify(groupsArray));
   element.parentElement.remove();
+  correctNumbering(groupNum, personNum);
+}
+
+function correctNumbering(groupNum, personNum) {
+  let people = document.getElementById("people-" + groupNum);
+  for(let i=personNum; i<people.children.length-1; i++) { //length-1 to account for headercontainer
+    console.log("person-" + groupNum + "-" + (parseInt(i)+1));
+    var person = document.getElementById("person-" + groupNum + "-" + (parseInt(i)+1));
+    person.id = "person-" + groupNum + "-" + i;
+    console.log(person.id);
+    for(let j=0; j<person.children.length; j++) {
+      person.children[j].id = person.children[j].id.split('-')[0] + "-" + groupNum + "-" + i;
+    }
+  }
 }
 
 function calculate(groupNum, personNum) {
@@ -263,7 +303,7 @@ function editDate(timer) {
   let personNum = timer.id.split('-').pop();
 
   const datePicker = document.createElement("input");
-  datePicker.id = "date" + timer.id.split('-').pop();
+  datePicker.id = "date-" + timer.id.split('-').pop();
   datePicker.classList.add("date");
   datePicker.type = "date";
   datePicker.setAttribute("onchange", "saveNewDate(this)");
@@ -300,4 +340,5 @@ function removeGroup(removeButton) {
     // groupsArray.splice(1,3);
     // localStorage.setItem("groupsArray", JSON.stringify(groupsArray));
     console.log(accessGroups());
+    document.getElementById("timer-0-0").classList.add("fillTank");
   }

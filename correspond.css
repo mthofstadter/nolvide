@@ -1,3 +1,9 @@
+:root {
+  --startFill: 0px;
+  --endFill: 1000px;
+  --fillDuration: 2s;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -169,7 +175,7 @@ h1 {
 }
 
 .fillTank.timer {
-  animation: fillTank 0.2s forwards;
+  animation: fillTank var(--fillDuration) forwards;
 }
 
 .editMode .timer {
@@ -349,7 +355,8 @@ Transitions/Animations
 }
 
 @keyframes fillTank {
-  /* to {background: linear-gradient(to right, #eeeeee 0%, #17a772 100%)} */
+  from {box-shadow: var(--startFill) 0px #17A772 inset;}
+  to {box-shadow: var(--endFill) 0px #17A772 inset;}
 }
 
 /***************************************
